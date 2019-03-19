@@ -13,9 +13,9 @@ from matplotlib.animation import FuncAnimation
 
 rmax = 140
 
-hostname = 'smtcosvm05.mwo.local'
-username = 'reader'
-password = 'mwo231'
+hostname = 'hostname'
+username = 'user'
+password = 'password'
 
 def animate(i):
     
@@ -36,9 +36,9 @@ def animate(i):
     cur = myConnection.cursor()
 
     #The data query
-    cur.execute("SELECT TmStamp, max(SETRA0TO30_0970_DIFFP_INWC_Max), min(SETRA0TO30_0970_DIFFP_INWC_Min), (max(SETRA0TO30_0970_WS_KTS_Max)*1.15), (min(SETRA0TO30_0970_WS_KTS_Max)*1.15) \
-                FROM loggerNetRaw.SMTB_SETRA0TO30_0970 where TmStamp between curdate() and curdate()+1 \
-                group by year(TmStamp), month(TmStamp), date(TmStamp), hour(TmStamp), minute(TmStamp);")
+    cur.execute("SELECT time, max(inchesH20), min(inchesH20), (max(velocityKnots)*1.15), (min(velocityKnots)*1.15) \
+                FROM database.table where time between curdate() and curdate()+1 \
+                group by year(time), month(time), date(time), hour(time), minute(time);")
 
     #Pulling data from the darabase
     results = cur.fetchall()
