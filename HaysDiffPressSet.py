@@ -6,9 +6,9 @@ from matplotlib.animation import FuncAnimation
 
 rmax = 10
 
-hostname = 'smtcosvm05.mwo.local'
-username = 'reader'
-password = 'mwo231'
+hostname = 'host'
+username = 'user'
+password = 'password'
 
 #clearing data off of the previous chart so that the data does not build up and kill memory
 fig = plt.figure(figsize=(11,11))
@@ -30,9 +30,9 @@ cur = myConnection.cursor()
 StartDate = "2019-01-22"
 EndDate   = "2019-01-23"
 
-sqlString = f"SELECT TmStamp, max(SETRA0TO30_0970_DIFFP_INWC_Max), min(SETRA0TO30_0970_DIFFP_INWC_Min), (max(SETRA0TO30_0970_WS_KTS_Max)*1.15), (min(SETRA0TO30_0970_WS_KTS_Max)*1.15) \
-            FROM loggerNetRaw.SMTB_SETRA0TO30_0970 where TmStamp between '{StartDate}' and '{EndDate}' \
-            group by year(TmStamp), month(TmStamp), date(TmStamp), hour(TmStamp), minute(TmStamp);"
+sqlString = f"SELECT time, max(inH20), min(inH20), (max(velocityKnots)*1.15), (min(velocityKnots)*1.15) \
+            FROM database.table where time between '{StartDate}' and '{EndDate}' \
+            group by year(time), month(time), date(time), hour(time), minute(time);"
 
 #The data query
 cur.execute(sqlString)
