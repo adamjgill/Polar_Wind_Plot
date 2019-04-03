@@ -1,0 +1,15 @@
+Below is a list of requirtements needed for the program just in case something breaks with an update
+Updates do have the possibility of breaking this program,
+It is currently being written in an virtual enviroment in order to keep it seperated from the rest of
+Anaconda
+
+Python Version: 3.6.5
+
+Libraries:
+    matplotlib = 2.2.2
+    mkl        = 2018.0.0 (This had to be downgraded due to issue with 2018.0.3)
+    numpy      = 1.14.2   (Numpy also had to be downgraded due to issue with 1.14.4)
+    pandas     = 0.23.0
+    pymysql    = 0.8.1
+    pyqt       = 5.9.2
+    qt         = 5.9.5
